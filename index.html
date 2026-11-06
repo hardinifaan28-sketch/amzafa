@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1877f2">
+  <title>AMZAFA - Media Sosial</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f0f2f5;
+      color: #1c1e21;
+    }
+    header {
+      background: #1877f2;
+      color: white;
+      padding: 16px;
+      font-size: 25px;
+      font-weight: bold;
+      position: sticky;
+      top: 0;
+    }
+    .container {
+      max-width: 650px;
+      margin: 20px auto;
+      padding: 0 12px;
+    }
+    .card {
+      background: white;
+      padding: 16px;
+      margin-bottom: 14px;
+      border-radius: 12px;
+      box-shadow: 0 1px 3px #0001;
+    }
+    .intro { text-align: center; }
+    .intro h1 { color: #1877f2; }
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      margin: 8px 0;
+      font: inherit;
+    }
+    button {
+      background: #1877f2;
+      color: white;
+      border: 0;
+      border-radius: 8px;
+      padding: 11px 18px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .post { white-space: pre-wrap; }
+    .muted { color: #65676b; font-size: 13px; }
+  </style>
+</head>
+<body>
+  <header>AMZAFA</header>
+
+  <main class="container">
+    <section class="card intro">
+      <h1>Selamat Datang di AMZAFA</h1>
+      <p>Terhubung dengan teman dan bagikan ceritamu.</p>
+    </section>
+
+    <section class="card">
+      <h3>Buat Postingan</h3>
+      <textarea id="postText" placeholder="Apa yang sedang Anda pikirkan?"></textarea>
+      <button onclick="addPost()">Bagikan</button>
+    </section>
+
+    <section id="posts">
+      <article class="card">
+        <strong>AMZAFA</strong>
+        <p class="muted">Postingan pertama</p>
+        <p>Selamat datang! Mari mulai berbagi cerita di AMZAFA.</p>
+      </article>
+    </section>
+  </main>
+
+  <script>
+    function addPost() {
+      const input = document.getElementById("postText");
+      const value = input.value.trim();
+      if (!value) {
+        alert("Tuliskan sesuatu terlebih dahulu.");
+        return;
+      }
+
+      const article = document.createElement("article");
+      article.className = "card";
+
+      const name = document.createElement("strong");
+      name.textContent = "Pengguna AMZAFA";
+
+      const content = document.createElement("p");
+      content.className = "post";
+      content.textContent = value;
+
+      article.append(name, content);
+      document.getElementById("posts").prepend(article);
+      input.value = "";
+    }
+  </script>
+</body>
+</html>
